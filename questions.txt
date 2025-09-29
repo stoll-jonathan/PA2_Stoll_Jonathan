@@ -1,0 +1,9 @@
+a) What are your observations?
+Most executions are fasted with 2 threads. This becomes more pronounced with larger arrays. Using more than 2 threads will typically make the process less efficient, not more.
+
+b) Do you find the observed behavior reasonable? Why/Why not?
+This behavior is reasonable as maintaining threads requires operations to be performed by the CPU. As more threads are used they can reach a point where more resources are used to maintain the threads than are saved by the threads.
+
+c) What kind of considerations did you make for your implementation of the Critical Section? Provide reasoning/justification.
+The critical section was the point where each thread adds its total to the running totalSum. This is the point where multiple threads could be accessing the same address simultaniously. To account for this, the section was contained within pthread_mutex_lock() and pthread_mutex_unlock() to prevent threads from running the command simultaniously.
+
