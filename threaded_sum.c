@@ -34,6 +34,11 @@ int main(int argc, char* argv[]) {
     int threadsRequested = atoi(argv[2]);
     int valuesRead = readFile(filename, arr);
 
+    if (valuesRead == -1) {
+        printf("%s\n", "Could not open file");
+        return -1;
+    }
+
     if (threadsRequested > valuesRead) {
         printf("%s\n", "Too many threads requested!");
         return -1;
